@@ -1,0 +1,34 @@
+import Sort.*;
+
+import java.io.File;
+import java.io.IOException;
+
+public class MainSmoothSort {
+
+    public static void main(String[] args) throws IOException {
+        CreatingInputFiles.fillFiles();
+        CreatingFullInfoFile fullInfo = new CreatingFullInfoFile();
+
+        File dir = new File("C:\\Users\\Админ\\Los\\SemWork\\Files");
+        File[] lst = dir.listFiles();
+
+        for (int i = 1; i < lst.length + 1; i++) {
+            CreatingIntArray array = new CreatingIntArray();
+            SmoothSort sort = new SmoothSort();
+
+            Integer[] newArray = array.readFileAndReturnIntArray(i);
+            SmoothSort.sort(newArray, 0, newArray.length - 1);
+            long time = SmoothSort.returnTime();
+            int iterations = SmoothSort.returnIteration();
+            fullInfo.fillFullInfo(time, iterations, i);
+        }
+
+        /*Integer[] array = {9,8,7,6,5,4,3,2,1};
+        SmoothSort.sort(array, 0, array.length - 1);
+        System.out.println(Arrays.toString(array));
+
+        System.out.println(SmoothSort.returnTime());
+        System.out.println(SmoothSort.returnIteration());
+    */}
+
+}
